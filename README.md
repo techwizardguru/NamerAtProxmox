@@ -19,20 +19,20 @@ The default image install is fast like the original CT `125` flow. Source builds
 Run this on the Proxmox VE host as `root`:
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/Nanja-at-web/NamerAtProxmox/main/ct/namer.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/techwizardguru/NamerAtProxmox/main/ct/namer.sh)"
 ```
 
 To skip the menu and force the default path:
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/Nanja-at-web/NamerAtProxmox/main/ct/namer.sh)" -- default
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/techwizardguru/NamerAtProxmox/main/ct/namer.sh)" -- default
 ```
 
 That simple command currently installs:
 
 ```text
 NAMER_INSTALL_MODE=image
-NAMER_SOURCE_REPO=Nanja-at-web/namer
+NAMER_SOURCE_REPO=techwizardguru/namer
 NAMER_SOURCE_REF=codex/matching-cleanup-review-db
 NAMER_IMAGE=ghcr.io/nanja-at-web/namer:matching-cleanup-review-db
 ```
@@ -46,7 +46,7 @@ QNAP_EXPORT=/namer \
 NAMER_PORT=6980 \
 PORNDB_TOKEN=your_metadataapi_token \
 CTID=120 \
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/Nanja-at-web/NamerAtProxmox/main/ct/namer.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/techwizardguru/NamerAtProxmox/main/ct/namer.sh)"
 ```
 
 `PORNDB_TOKEN` is optional for installation, but Namer needs a valid token before it can successfully search/process files. Without it, the WebUI still starts and the token can be added later in `/opt/namer/config/namer.cfg`.
@@ -56,7 +56,7 @@ Install another Namer branch:
 ```bash
 NAMER_INSTALL_MODE_OVERRIDE=source \
 NAMER_SOURCE_REF=your-branch-name \
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/Nanja-at-web/NamerAtProxmox/main/ct/namer.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/techwizardguru/NamerAtProxmox/main/ct/namer.sh)"
 ```
 
 Use the official upstream Docker image instead of the Nanja-at-web image:
@@ -64,7 +64,7 @@ Use the official upstream Docker image instead of the Nanja-at-web image:
 ```bash
 NAMER_INSTALL_MODE_OVERRIDE=image \
 NAMER_IMAGE_OVERRIDE=ghcr.io/theporndatabase/namer:latest \
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/Nanja-at-web/NamerAtProxmox/main/ct/namer.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/techwizardguru/NamerAtProxmox/main/ct/namer.sh)"
 ```
 
 The default installer creates a privileged LXC because QNAP/NFS often rejects the UID mapping used by unprivileged containers. If you explicitly want an unprivileged container, set `CT_UNPRIVILEGED=1` and make sure the QNAP export allows the mapped LXC UID/GID to write.
@@ -77,7 +77,7 @@ QNAP_IP=192.168.1.24 \
 QNAP_EXPORT=/namer \
 NAMER_PORT=6980 \
 CT_UNPRIVILEGED=0 \
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/Nanja-at-web/NamerAtProxmox/main/ct/namer.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/techwizardguru/NamerAtProxmox/main/ct/namer.sh)"
 ```
 
 ## QNAP NFS bind mount
@@ -240,7 +240,7 @@ pct exec <CTID> -- journalctl -u namer -n 120 --no-pager
 | `NAMER_MEDIA_MOUNT` | `/namer` | Path used by Namer inside the Docker container |
 | `NAMER_PORT` | `6980` | WebUI port |
 | `NAMER_INSTALL_MODE_OVERRIDE` | `image` | `image` pulls `NAMER_IMAGE_OVERRIDE`; `source` builds a Docker image from a Git branch |
-| `NAMER_SOURCE_REPO` | `Nanja-at-web/namer` | GitHub repo used in source mode |
+| `NAMER_SOURCE_REPO` | `techwizardguru/namer` | GitHub repo used in source mode |
 | `NAMER_SOURCE_REF` | `codex/matching-cleanup-review-db` | Git branch or tag used in source mode |
 | `NAMER_IMAGE_OVERRIDE` | `ghcr.io/nanja-at-web/namer:matching-cleanup-review-db` | Docker image name to build or pull |
 | `NAMER_CONFIG_URL` | branch default config | URL used to create `/opt/namer/config/namer.cfg` |

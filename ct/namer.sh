@@ -6,7 +6,7 @@ set -Eeuo pipefail
 
 APP="Namer"
 NSAPP="namer"
-RAW_BASE="${RAW_BASE:-https://raw.githubusercontent.com/Nanja-at-web/NamerAtProxmox/main}"
+RAW_BASE="${RAW_BASE:-https://raw.githubusercontent.com/techwizardguru/NamerAtProxmox/main}"
 LOG_FILE="${LOG_FILE:-/tmp/${NSAPP}-create-$(date +%Y%m%d%H%M%S).log}"
 
 YW=$'\033[33m'
@@ -42,7 +42,7 @@ QNAP_IP="${QNAP_IP:-192.168.1.24}"
 QNAP_EXPORT="${QNAP_EXPORT:-/namer}"
 NAMER_PORT="${NAMER_PORT:-6980}"
 PORNDB_TOKEN="${PORNDB_TOKEN:-${TPDB_TOKEN:-}}"
-NAMER_SOURCE_REPO="${NAMER_SOURCE_REPO:-Nanja-at-web/namer}"
+NAMER_SOURCE_REPO="${NAMER_SOURCE_REPO:-techwizardguru/namer}"
 NAMER_SOURCE_REF="${NAMER_SOURCE_REF:-codex/matching-cleanup-review-db}"
 NAMER_INSTALL_MODE="${NAMER_INSTALL_MODE_OVERRIDE:-image}"
 NAMER_IMAGE="${NAMER_IMAGE_OVERRIDE:-ghcr.io/nanja-at-web/namer:matching-cleanup-review-db}"
