@@ -212,7 +212,7 @@ pct exec <CTID> -- systemctl restart namer
 The host-side installer prints the host log path at startup and again at the end:
 
 ```text
-Host install log: /tmp/nameratproxmox-YYYYMMDDHHMMSS.log
+Host install log: /tmp/namer-create-YYYYMMDDHHMMSS.log
 ```
 
 The container-side installer log is available with:
